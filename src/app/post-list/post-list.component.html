@@ -1,0 +1,38 @@
+<table class="table text-center">
+  <thead>
+    <tr class="table-primary">
+      <th>Imagen</th>
+      <th>Titulo</th>
+      <th>Calificación</th>
+      <th>Tags</th>
+      <th># Favs</th>
+      <th>Favoritos</th>
+      <th>Calificar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of posts">
+      <td><img width=100 class="img-thumbnail" [src]="post.imagen" [alt]="post.titulo"></td>
+      <td>{{post.titulo}}</td>
+      <td>{{post.calificacion}}</td>
+      <td>{{post.tags}}</td>
+      <td><span *ngIf="post.favs==0; else mostrarVisitas">Post nuevo</span></td>
+      <ng-template #mostrarVisitas>{{post.favs}}</ng-template>
+      <td>
+        <button class="btn btn-primary btn-submit" (click)="guardarPost(post)">Guardar</button>
+      </td>
+      <td>
+        <form class="form-calificar" action="">
+          <select class="select-calificar" name="calificacion" id="calificacion">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <button type="submit" class="btn btn-primary btn-submit">Calificar</button>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
