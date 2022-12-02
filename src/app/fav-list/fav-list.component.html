@@ -1,4 +1,5 @@
-<table class="table text-center">
+<h1 class="text-center">Lista de Favoritos</h1>
+<table class="table text-center table-success">
   <thead>
     <tr>
       <th>Imagen</th>
@@ -6,13 +7,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>TBC</td>
-      <td>Top 7 maneras de cocinar un pollo</td>
-    </tr>
-    <tr>
-      <td>TBC</td>
-      <td>E-books gratuitos</td>
+    <tr *ngFor="let fav_post of fav_post_list$ | async">
+      <td><img class="img-thumbnail" width=50 [src]="fav_post.imagen" [alt]="fav_post.titulo"></td>
+      <td>{{fav_post.titulo}}</td>
     </tr>
   </tbody>
 </table>

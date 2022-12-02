@@ -8,6 +8,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { FavListComponent } from './fav-list/fav-list.component';
 import { BlogAboutComponent } from './blog-about/blog-about.component';
 import { BlogPostsComponent } from './blog-posts/blog-posts.component';
+import { InputRateComponent } from './input-rate/input-rate.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BlogPostsComponent } from './blog-posts/blog-posts.component';
     PostListComponent,
     FavListComponent,
     BlogAboutComponent,
-    BlogPostsComponent
+    BlogPostsComponent,
+    InputRateComponent
   ],
   imports: [
     BrowserModule,

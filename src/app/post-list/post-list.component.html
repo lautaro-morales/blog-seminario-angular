@@ -1,11 +1,11 @@
+<h1 class="text-center">Lista de Posteos</h1>
 <table class="table text-center">
   <thead>
     <tr class="table-primary">
       <th>Imagen</th>
       <th>Titulo</th>
       <th>Calificación</th>
-      <th>Tags</th>
-      <th># Favs</th>
+      <th># de Favs</th>
       <th>Favoritos</th>
       <th>Calificar</th>
     </tr>
@@ -14,24 +14,18 @@
     <tr *ngFor="let post of posts">
       <td><img width=100 class="img-thumbnail" [src]="post.imagen" [alt]="post.titulo"></td>
       <td>{{post.titulo}}</td>
-      <td>{{post.calificacion}}</td>
-      <td>{{post.tags}}</td>
+      <td>
+        {{post.calificacion}}, {{post.cantidad_votos}}<span *ngIf="post.cantidad_votos==1; else votosPlural"> voto</span>
+        <span><ng-template #votosPlural> votos</ng-template></span>
+      </td>
       <td><span *ngIf="post.favs==0; else mostrarVisitas">Post nuevo</span></td>
       <ng-template #mostrarVisitas>{{post.favs}}</ng-template>
       <td>
-        <button class="btn btn-primary btn-submit" (click)="guardarPost(post)">Guardar</button>
+          <button *ngIf="post.saved else btnGuardar" class="btn btn-danger btn-submit" (click)="agregarAFavoritos(post)">Eliminar</button>
+          <ng-template #btnGuardar><button class="btn btn-primary btn-submit" (click)="agregarAFavoritos(post)">Guardar</button></ng-template>
       </td>
       <td>
-        <form class="form-calificar" action="">
-          <select class="select-calificar" name="calificacion" id="calificacion">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <button type="submit" class="btn btn-primary btn-submit">Calificar</button>
-        </form>
+        <app-input-rate [(promedio_actual)]="post.calificacion" [(divisor)]="post.cantidad_votos" *ngIf="post.saved"></app-input-rate>
       </td>
     </tr>
   </tbody>

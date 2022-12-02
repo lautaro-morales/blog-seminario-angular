@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FavListService } from '../fav-post-list.service';
 import { Post } from './post';
 
 @Component({
@@ -8,12 +9,12 @@ import { Post } from './post';
 })
 export class PostListComponent implements OnInit {
 
-
   posts: Post[] =
   [
     {
       imagen: "assets/img/pollo-asado.jpg",
       titulo: "Top 7 maneras de cocinar un pollo",
+      cantidad_votos: 0,
       calificacion: 0,
       tags: "alimentación - receta",
       favs: 0,
@@ -22,36 +23,32 @@ export class PostListComponent implements OnInit {
     {
       imagen: "assets/img/ebook.jpg",
       titulo: "E-books gratuitos",
+      cantidad_votos: 1,
       calificacion: 5,
       tags: "libros - educacion",
-      favs: 3,
+      favs: 1,
       saved: false,
     },
     {
       imagen: "assets/img/youtube-logo.jpg",
       titulo: "Canales de Youtube DIY",
+      cantidad_votos: 6,
       calificacion: 3,
       tags: "recomendaciones",
       favs: 6,
       saved: false,
     }
   ];
-  constructor() { }
+
+  constructor(private fav_list_srvc: FavListService) {
+
+  }
 
   ngOnInit(): void {
   }
 
-  guardarPost(post: Post): void {
-    if (!post.saved) {
-      alert('Post guardado!');
-      post.favs++;
-      post.saved = true;
-    }
-    else {
-      alert('Eliminado de favoritos');
-      post.favs--;
-      post.saved = false;
-    }
+  agregarAFavoritos(post: Post): void {
+    this.fav_list_srvc.addToFavList(post);
   }
 
 }

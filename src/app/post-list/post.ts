@@ -3,6 +3,7 @@ export interface Post {
   titulo: string;
   tags: string;
   favs: number;
+  cantidad_votos: number;
   calificacion: number;
   saved: boolean;
 }

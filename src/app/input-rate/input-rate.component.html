@@ -1,0 +1,10 @@
+<form class="form-calificar" action="">
+  <select class="select-calificar" name="calificar" id="calificar" [(ngModel)]="sumar_a_promedio">
+    <option [ngValue]="1">1</option>
+    <option [ngValue]="2">2</option>
+    <option [ngValue]="3">3</option>
+    <option [ngValue]="4">4</option>
+    <option [ngValue]="5">5</option>
+  </select>
+  <button (click)="calcularNuevoPromedio()" class="btn btn-primary btn-submit">Calificar</button>
+</form>
