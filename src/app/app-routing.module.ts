@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlogAboutComponent } from './blog-about/blog-about.component';
 import { BlogPostsComponent } from './blog-posts/blog-posts.component';
-import { PostListComponent } from './post-list/post-list.component';
 
 const routes: Routes = [
   {
@@ -16,7 +15,7 @@ const routes: Routes = [
     component: BlogPostsComponent
   },
   {
-    path: 'about',
+    path: 'contact',
     component: BlogAboutComponent
   }
 ];
